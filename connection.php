@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Creating Tables</title>
 </head>
 <body>
 
 <?php
-/*
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bombarda_cit17_database";
+$dbname = "PHPScriptDemo"; // Change this to your database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -21,37 +20,74 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
-*/
-?>
-<?php
-    //CREATING TABLE  
-    $dbhost = 'localhost';
-    $dbuser = 'root';
-    $dbpass = '';
-    $dbname = 'bombarda_cit17_database';
-    $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
-    
-    if($mysqli->connect_errno ) {
-       printf("Connect failed: %s<br />", $mysqli->connect_error);
-       exit();
-    }
-    printf('Connected successfully.<br />');
+echo "Connected successfully<br>";
 
-    $sql = "CREATE TABLE Students( ".
-       "studId INT NOT NULL AUTO_INCREMENT, ".
-       "lastName VARCHAR(255) NOT NULL, ".
-       "middleName VARCHAR(255) NOT NULL, ".
-       "firstName VARCHAR(255) NOT NULL, ".
-       "PRIMARY KEY ( studId )); ";
-    if ($mysqli->query($sql)) {
-       printf("Table Students created successfully.<br />");
-    }
-    if ($mysqli->errno) {
-       printf("Could not create table: %s<br />", $mysqli->error);
-    }
+// Create Students table
+$sql_students = "CREATE TABLE Students (
+    StudentID INT NOT NULL AUTO_INCREMENT,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    DateOfBirth DATE,
+    Email VARCHAR(255),
+    Phone VARCHAR(20),
+    PRIMARY KEY (StudentID)
+)";
 
-    $mysqli->close();
+if ($conn->query($sql_students) === TRUE) {
+    echo "Table Students created successfully<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
+
+// Create Course table
+$sql_course = "CREATE TABLE Course (
+    CourseID INT NOT NULL AUTO_INCREMENT,
+    CourseName VARCHAR(255) NOT NULL,
+    Credits INT,
+    PRIMARY KEY (CourseID)
+)";
+
+if ($conn->query($sql_course) === TRUE) {
+    echo "Table Course created successfully<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
+
+// Create Instructor table
+$sql_instructor = "CREATE TABLE Instructor (
+    InstructorID INT NOT NULL AUTO_INCREMENT,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255),
+    Phone VARCHAR(20),
+    PRIMARY KEY (InstructorID)
+)";
+
+if ($conn->query($sql_instructor) === TRUE) {
+    echo "Table Instructor created successfully<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
+
+// Create Enrollment table
+$sql_enrollment = "CREATE TABLE Enrollment (
+    EnrollmentID INT NOT NULL AUTO_INCREMENT,
+    StudentID INT NOT NULL,
+    CourseID INT NOT NULL,
+    EnrollmentDate DATE,
+    Grade VARCHAR(2),
+    PRIMARY KEY (EnrollmentID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+)";
+
+if ($conn->query($sql_enrollment) === TRUE) {
+    echo "Table Enrollment created successfully<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
+
+$conn->close();
 ?>
 </body>
 </html>
