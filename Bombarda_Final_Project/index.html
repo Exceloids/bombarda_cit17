@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <h1>Welcome to the Student Information System Setup</h1>
+
+    <p>Click the button below to set up the database and tables:</p>
+
+    <!-- Form to submit the setup.php file -->
+    <form action="setup.php" method="post">
+        <input type="submit" value="Setup Database" />
+    </form>
+
+<div class="container">
+    <!-- User CRUD Operations -->
+    <h2>User Management</h2>
+    <a href="Student.php" class="btn btn-primary">Students</a>
+    <a href="Course.php" class="btn btn-success">Courses</a>
+    <a href="Instructor.php" class="btn btn-warning">Instructor</a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

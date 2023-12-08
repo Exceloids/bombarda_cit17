@@ -7,7 +7,7 @@
 </head>
 <body>
    <?php
-   /*
+   
    //DROPPING TABLE
          $dbhost = 'localhost';
          $dbuser = 'root';
@@ -20,14 +20,14 @@
          }
          printf('Connected successfully.<br />');
 
-         if ($mysqli->query("Drop DATABASE Bombarda_Database")) {
-            printf("Database Bombarda_Database dropped successfully.<br />");
+         if ($mysqli->query("Drop DATABASE Bombarda_Final_Project")) {
+            printf("Database Bombarda_Final_Project dropped successfully.<br />");
          }
          if ($mysqli->errno) {
             printf("Could not drop database: %s<br />", $mysqli->error);
          }
          $mysqli->close();
-         */
+         
       ?>
 
       
@@ -61,6 +61,7 @@
 
          $mysqli->close();
          */
+      
       ?>
 
 
