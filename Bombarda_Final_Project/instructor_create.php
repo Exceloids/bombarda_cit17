@@ -12,7 +12,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Student Create</title>
+    <title>Instructor Create</title>
 </head>
 <body>
   
@@ -24,8 +24,8 @@ session_start();
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Student Add 
-                            <a href="Student.php" class="btn btn-danger float-end">BACK</a>
+                        <h4>Instructor Add 
+                            <a href="Instructor.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -33,28 +33,28 @@ session_start();
 
                             <div class="mb-3">
                                 <label>First Name</label>
-                                <input type="text" name="firstname" class="form-control">
+                                <input type="text" name="instructor_fname" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Last Name</label>
-                                <input type="text" name="lastname" class="form-control">
+                                <input type="text" name="instructor_lname" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Date of Birth</label>
-                                <input type="date" name="dob" class="form-control">
+                                <input type="date" name="instructor_dob" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="instructor_email" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Phone</label>
-                                <input type="text" name="phone" class="form-control">
+                                <input type="text" name="instructor_phone" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="expertiseSelect" class="form-label">Course</label>
+                                <label for="expertiseSelect" class="form-label">Expertise</label>
                                 <select name="course_index" onchange="ReloadCourseIndex();">
-                                <option value="">Select Course</option>
+                                <option value="">Select Expertise</option>
                     
                                     <option value="162">BACHELOR  OF PHYSICAL EDUCATION</option>
                                     <option value="163">BACHELOR  OF SCIENCE IN COMPUTER SCIENCE</option>
@@ -154,7 +154,7 @@ session_start();
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_student" class="btn btn-primary">Save Student</button>
+                                <button type="submit" name="save_instructor" class="btn btn-primary">Save Instructor</button>
                             </div>
 
                         </form>

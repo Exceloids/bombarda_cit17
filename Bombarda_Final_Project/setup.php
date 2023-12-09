@@ -36,14 +36,20 @@ function createTables($conn) {
 
     $sqlInstructor = "CREATE TABLE IF NOT EXISTS Instructor (
         instructor_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        instructor_name VARCHAR(50) NOT NULL,
-        expertise VARCHAR(100),
+        FirstName VARCHAR(255) NOT NULL,
+        LastName VARCHAR(255) NOT NULL,
+        DateOfBirth DATE,
+        Email VARCHAR(255),
+        Phone VARCHAR(20),
+        degree VARCHAR(100),
         reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
     $sqlCourse = "CREATE TABLE IF NOT EXISTS Course (
         course_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         course_name VARCHAR(50) NOT NULL,
+        course_desc VARCHAR(50) NOT NULL,
+        course_units INT(1) NOT NULL,
         instructor_id INT UNSIGNED,
         reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id)

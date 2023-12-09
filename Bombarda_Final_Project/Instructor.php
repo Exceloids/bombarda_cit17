@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <h4>Instructor Details
                             <a href="index.html" class="btn btn-danger float-end">BACK</a>
-                            <a href="instructor-create.php" class="btn btn-primary float-end">Add Instructor</a>
+                            <a href="instructor_create.php" class="btn btn-primary float-end">Add Instructor</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -51,13 +51,13 @@
                                             ?>
                                             <tr>
                                                 <td><?= $instructor['instructor_id']; ?></td>
-                                                <td><?= $instructor['instructor_name']; ?></td>
-                                                <td><?= $instructor['expertise']; ?></td>
+                                                <td><?= $instructor['FirstName'] . ' ' . $instructor['LastName']; ?></td>
+                                                <td><?= $instructor['degree']; ?></td>
                                                 <td>
-                                                    <a href="instructor-view.php?id=<?= $instructor['instructor_id']; ?>" class="btn btn-info btn-sm">View</a>
-                                                    <a href="instructor-edit.php?id=<?= $instructor['instructor_id']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="instructor_view.php?id=<?= $instructor['instructor_id']; ?>" class="btn btn-info btn-sm">View</a>
+                                                    <a href="instructor_edit.php?id=<?= $instructor['instructor_id']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                     <form action="code.php" method="POST" class="d-inline">
-                                                        <button type="submit" name="delete_student" value="<?= $instructor['StudentID']; ?>" class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" name="delete_instructor" value="<?= $instructor['instructor_id']; ?>" class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

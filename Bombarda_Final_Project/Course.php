@@ -26,7 +26,7 @@
                     <div class="card-header">
                         <h4>Course Details
                             <a href="index.html" class="btn btn-danger float-end">BACK</a>
-                            <a href="course-create.php" class="btn btn-primary float-end">Add Course</a>
+                            <a href="course_create.php" class="btn btn-primary float-end">Add Course</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -46,18 +46,18 @@
 
                                     if(mysqli_num_rows($query_run) > 0)
                                     {
-                                        foreach($query_run as $teacher)
+                                        foreach($query_run as $course)
                                         {
                                             ?>
                                             <tr>
-                                                <td><?= $teacher['course_id']; ?></td>
-                                                <td><?= $teacher['course_name']; ?></td>
-                                                <td><?= $teacher['instructor_id']; ?></td>
+                                                <td><?= $course['course_id']; ?></td>
+                                                <td><?= $course['course_name']; ?></td>
+                                                <td><?= $course['instructor_id']; ?></td>
                                                 <td>
-                                                    <a href="teacher$teacher-view.php?id=<?= $teacher['course_id']; ?>" class="btn btn-info btn-sm">View</a>
-                                                    <a href="teacher$teacher-edit.php?id=<?= $teacher['course_id']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="course_view.php?id=<?= $course['course_id']; ?>" class="btn btn-info btn-sm">View</a>
+                                                    <a href="course_edit.php?id=<?= $course['course_id']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                     <form action="code.php" method="POST" class="d-inline">
-                                                        <button type="submit" name="delete_teacher$teacher" value="<?= $teacher['teacher$teacherID']; ?>" class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" name="delete_course" value="<?= $course['course_id']; ?>" class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

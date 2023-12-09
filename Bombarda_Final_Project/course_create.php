@@ -12,7 +12,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Instructor Create</title>
+    <title>Course Create</title>
 </head>
 <body>
   
@@ -24,23 +24,31 @@ session_start();
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Student Add 
-                            <a href="Instructor.php" class="btn btn-danger float-end">BACK</a>
+                        <h4>Add Course 
+                            <a href="Course.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
                         <form action="code.php" method="POST">
 
                             <div class="mb-3">
-                                <label>Name</label>
-                                <input type="text" name="instructor_name" class="form-control">
+                                <label>Course Name</label>
+                                <input type="text" name="course_name" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label>Expertise</label>
-                                <input type="text" name="expertise" class="form-control">
+                                <label>Course Description</label>
+                                <input type="text" name="course_desc" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_instructor" class="btn btn-primary">Save Instructor</button>
+                                <label>Total Units</label>
+                                <input type="number" name="course_units" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label>Instructor ID</label>
+                                <input type="number" name="instructor_id" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" name="save_course" class="btn btn-primary">Save Student</button>
                             </div>
 
                         </form>
