@@ -59,9 +59,11 @@ function createTables($conn) {
         enrollment_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         student_id INT UNSIGNED,
         course_id INT UNSIGNED,
+        instructor_id INT UNSIGNED,
         enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (student_id) REFERENCES Student(StudentID),
-        FOREIGN KEY (course_id) REFERENCES Course(course_id)
+        FOREIGN KEY (course_id) REFERENCES Course(course_id),
+        FOREIGN KEY (instructor_id) REFERENCES Instructor(instructor_id)
     )";
 
     $sqlQueries = [$sqlUsers, $sqlStudent, $sqlInstructor, $sqlCourse, $sqlEnrollment];

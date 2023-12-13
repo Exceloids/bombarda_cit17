@@ -44,27 +44,57 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add Course 
-                            <a href="Course.php" class="btn btn-danger float-end">BACK</a>
+                        <h4>Add Enrollment 
+                            <a href="Enrollment.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
                     <div class="card-body">
                         <form action="code.php" method="POST">
+                    
+                            <div class="mb-3">
+                            <label for="StudentID">Student Name</label>
+                            <select class="form-control" name="StudentID">
+                                <?php
+                                    $db = new mysqli("localhost", "root", "", "Bombarda_Final_Project");
+
+                                    if ($db->connect_error) {
+                                        die("Connection failed: " . $db->connect_error);
+                                    }
+
+                                    $result = $db->query("SELECT StudentID, LastName, FirstName FROM Student");
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["StudentID"] . "'>" . $row["LastName"] . ", " . $row["FirstName"] . "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                </div>
 
                             <div class="mb-3">
-                                <label>Course Name</label>
-                                <input type="text" name="course_name" class="form-control">
-                            </div>
+                            <label for="course_id">Course</label>
+                            <select class="form-control" name="course_id">
+                                <?php
+                                    $db = new mysqli("localhost", "root", "", "Bombarda_Final_Project");
+
+                                    if ($db->connect_error) {
+                                        die("Connection failed: " . $db->connect_error);
+                                    }
+
+                                    $result = $db->query("SELECT course_id, course_name FROM Course");
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["course_id"] . "'>" . $row["course_name"] ."</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                </div>
+
                             <div class="mb-3">
-                                <label>Course Description</label>
-                                <input type="text" name="course_desc" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label>Total Units</label>
-                                <input type="number" name="course_units" class="form-control">
-                            </div>
-                             <div class="mb-3">
-                            <label for="instructor_id">Instructor ID</label>
+                            <label for="instructor_id">Instructor</label>
                             <select class="form-control" name="instructor_id">
                                 <?php
                                     $db = new mysqli("localhost", "root", "", "Bombarda_Final_Project");
@@ -73,18 +103,19 @@
                                         die("Connection failed: " . $db->connect_error);
                                     }
 
-                                    $result = $db->query("SELECT instructor_id, LastName, FirstName FROM Instructor");
+                                    $result = $db->query("SELECT instructor_id,  LastName, FirstName FROM Instructor");
 
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<option value='" . $row["instructor_id"] . "'>" . $row["LastName"] . ", " . $row["FirstName"] . "</option>";
+                                            echo "<option value='" . $row["instructor_id"] . "'>" . $row["LastName"] . ", " . $row["FirstName"] ."</option>";
                                         }
                                     }
                                     ?>
                                 </select>
                                 </div>
+
                             <div class="mb-3">
-                                <button type="submit" name="save_course" class="btn btn-primary">Save Course</button>
+                                <button type="submit" name="save_enrollment" class="btn btn-primary">Save Course</button>
                             </div>
 
                         </form>

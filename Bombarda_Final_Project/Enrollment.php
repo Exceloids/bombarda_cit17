@@ -45,8 +45,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Student Record
-                            <a href="student-create.php" class="btn btn-primary float-end">Add Students</a>
+                        <h4>Enrollment Record
+                            <a href="enrollment_create.php" class="btn btn-primary float-end">Add Enrollment</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -57,28 +57,59 @@
                                     <th>ID</th>
                                     <th>Student Name</th>
                                     <th>Course</th>
-                                    <th>Action</th>
+                                    <th>Instructor</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
-                                    $query = "SELECT * FROM Student";
+                                    $query = "SELECT * FROM Enrollment";
                                     $query_run = mysqli_query($con, $query);
 
                                     if(mysqli_num_rows($query_run) > 0)
                                     {
-                                        foreach($query_run as $student)
+                                        foreach($query_run as $enroll)
                                         {
                                             ?>
                                             <tr>
-                                                <td><?= $student['StudentID']; ?></td>
-                                                <td><?= $student['FirstName'] . ' ' . $student['LastName']; ?></td>
-                                                <td><?= $student['Course']; ?></td>
+                                                <td><?= $enroll['enrollment_id']; ?></td>
                                                 <td>
-                                                    <a href="student-view.php?id=<?= $student['StudentID']; ?>" class="btn btn-info btn-sm">View</a>
-                                                    <a href="student-edit.php?id=<?= $student['StudentID']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <?php
+                                                        $result = $con->query("SELECT StudentID, LastName, FirstName FROM Student WHERE StudentID = '{$enroll['student_id']}'");
+
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                echo "<option value='" . $row["StudentID"] . "'>". $row["LastName"] . ", " . $row["FirstName"] . "</option>";
+                                                            }
+                                                        }
+                                                        ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                        $result = $con->query("SELECT course_id, course_name FROM Course WHERE course_id = '{$enroll['course_id']}'");
+
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                echo "<option value='" . $row["course_id"] . "'>". $row["course_name"] . "</option>";
+                                                            }
+                                                        }
+                                                        ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                        $result = $con->query("SELECT instructor_id, LastName, FirstName FROM Instructor WHERE instructor_id = '{$enroll['instructor_id']}'");
+
+                                                        if ($result->num_rows > 0) {
+                                                            while ($row = $result->fetch_assoc()) {
+                                                                echo "<option value='" . $row["instructor_id"] . "'>". $row["LastName"] . ", " . $row["FirstName"] . "</option>";
+                                                            }
+                                                        }
+                                                        ?>
+                                                </td>
+                                                <td>
+                                                    <a href="enroll-view.php?id=<?= $enroll['enrollment_id']; ?>" class="btn btn-info btn-sm">View</a>
+                                                    <a href="enroll-edit.php?id=<?= $enroll['enrollment_id']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                     <form action="code.php" method="POST" class="d-inline">
-                                                        <button type="submit" name="delete_student" value="<?= $student['StudentID']; ?>" class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" name="delete_student" value="<?= $enroll['enrollment_id']; ?>" class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -369,4 +369,27 @@ if(isset($_POST['update_course']))
     }
 }
 
+if(isset($_POST['save_enrollment']))
+{
+    $student = mysqli_real_escape_string($con, $_POST['StudentID']);
+    $course = mysqli_real_escape_string($con, $_POST['course_id']);
+    $instructor = mysqli_real_escape_string($con, $_POST['instructor_id']);
+
+    $query = "INSERT INTO Enrollment (student_id, course_id, instructor_id) VALUES ('$student', '$course', '$instructor')";
+
+    $query_run = mysqli_query($con, $query);
+    if($query_run)
+    {
+        $_SESSION['message'] = "Enrollement Created Successfully";
+        header("Location: Enrollment.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['message'] = "Enrollement Not Created";
+        header("Location: Enrollment.php");
+        exit(0);
+    }
+}
+
 ?>
